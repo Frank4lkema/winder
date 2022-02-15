@@ -1,0 +1,2 @@
+class WindForcast < ApplicationRecord
+end
