@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_193059) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "wind_forcasts", force: :cascade do |t|
+  create_table "wind_forecasts", force: :cascade do |t|
     t.integer "hour"
     t.integer "wind_speed"
     t.integer "wind_gust"
