@@ -1,2 +1,2 @@
-class WindForcast < ApplicationRecord
+class WindForecast < ApplicationRecord
 end
