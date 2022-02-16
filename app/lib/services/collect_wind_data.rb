@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module  Services
-  class ScrapSite
+  class CollectWindData
     include Callable
 
     def initialize(url)
@@ -17,7 +17,7 @@ module  Services
         wind_speed > 15 ? { wind_speed: wind_speed, hour: i } : nil
       end.compact
       initial_hour = forcast_data['init_h'].to_i
-      create_wind_forecasts(wind_speed_objects,initial_hour)
+      create_wind_forecasts(wind_speed_objects ,initial_hour)
     end
 
     private
@@ -26,19 +26,12 @@ module  Services
       WindForecast.destroy_all
     end
 
-    def calculate_hour(initial_hour, hour)
-      new_hour = initial_hour + hour
-
-      new_hour -= 24 if new_hour > 24
-
-      new_hour
-    end
-
     def create_wind_forecasts(objects,initial_hour)
+      date = Date.today + initial_hour.hours
       objects.each do |wind_speed_object|
         WindForecast.create!(
           wind_speed: wind_speed_object[:wind_speed],
-          hour: calculate_hour(initial_hour, wind_speed_object[:hour])
+          hour: date + initial_hour.hours
         )
       end
     end
