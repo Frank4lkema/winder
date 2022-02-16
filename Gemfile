@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.4'
 gem 'bootsnap', require: false
+gem "daemons"
 gem 'delayed_job_active_record'
 gem 'httparty'
 gem 'pg', '~> 1.1'
