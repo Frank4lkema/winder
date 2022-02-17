@@ -12,6 +12,7 @@ module  Services
       # windguru_data2 = HTTParty.get('https://www.windguru.net/int/iapi.php?q=forecast&id_model=52&rundef=2022021506x0x36x0x36&initstr=2022021506&id_spot=48299&WGCACHEABLE=21600&cachefix=52.451x4.564x0')
       # windguru_data =  HTTParty.get('https://www.windguru.net/int/iapi.php?q=forecast&id_model=52&rundef=2022021606x0x36x0x36&initstr=2022021606&id_spot=48299&WGCACHEABLE=21600&cachefix=52.451x4.564x0')
       windguru_data =  HTTParty.get('https://www.windguru.net/int/iapi.php?q=forecast&id_model=52&rundef=2022021706x0x36x0x36&initstr=2022021706&id_spot=48299&WGCACHEABLE=21600&cachefix=52.451x4.564x0')
+      windguru_data =  HTTParty.get('https://www.windguru.net/int/iapi.php?q=forecast&id_model=52&rundef=2022021700x0x42x0x42&initstr=2022021700&id_spot=48299&WGCACHEABLE=21600&cachefix=52.451x4.564x0')
       forcast_data = windguru_data['fcst']
       wind_speed_objects = forcast_data['WINDSPD'].map.with_index do |wind_speed, i|
         wind_speed > 15 ? { wind_speed: wind_speed, hour: i } : nil
