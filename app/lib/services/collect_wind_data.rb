@@ -9,8 +9,8 @@ module  Services
     end
 
     def call
-      windguru_data = HTTParty.get("https://www.windguru.net/int/iapi.php?q=forecast&id_model=52&rundef=#{Date.today.strftime("%Y%m%d")}00x0x42x0x42&initstr=#{Date.today.strftime("%Y%m%d")}00&id_spot=#{@spot.spot_id}&WGCACHEABLE=21600&cachefix=52.451x4.564x0")
-
+      url = "https://www.windguru.net/int/iapi.php?q=forecast&id_model=52&rundef=#{Date.today.strftime("%Y%m%d")}00x0x42x0x42&initstr=#{Date.today.strftime("%Y%m%d")}00&id_spot=48299&WGCACHEABLE=21600&cachefix=52.451x4.564x0"
+      windguru_data = HTTParty.get(url)
       forcast_data = windguru_data['fcst']
       wind_speed_objects = forcast_data['WINDSPD'].map.with_index do |wind_speed, i|
         wind_speed > 15 ? { wind_speed: wind_speed, hour: i } : nil
